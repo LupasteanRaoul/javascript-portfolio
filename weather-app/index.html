@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WeatherFlow Pro | Advanced Forecast</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="app-header">
+            <div class="logo">
+                <i class="fas fa-wind"></i>
+                <h1>WeatherFlow Pro</h1>
+                <p class="subtitle">Real-time weather intelligence</p>
+            </div>
+            <div class="current-time" id="current-time">
+                <i class="fas fa-clock"></i>
+                <span>Loading...</span>
+            </div>
+        </header>
+
+        <!-- Search Section -->
+        <div class="search-section">
+            <div class="search-container">
+                <i class="fas fa-search search-icon"></i>
+                <input type="text" id="search-input" placeholder="Search for a city..." autocomplete="off">
+                <button id="search-btn" class="btn btn-primary">
+                    <i class="fas fa-search-location"></i> Search
+                </button>
+            </div>
+            <div class="unit-toggle">
+                <button id="unit-toggle" class="btn btn-secondary" data-unit="C">
+                    <i class="fas fa-thermometer-half"></i>
+                    <span id="unit-text">Switch to °F</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Loading State -->
+        <div class="loading-container" id="loading">
+            <div class="spinner"></div>
+            <p>Fetching weather data...</p>
+        </div>
+
+        <!-- Main Weather Display -->
+        <main class="weather-display" id="weather-display">
+            <!-- Current Weather -->
+            <div class="current-weather card">
+                <div class="location-info">
+                    <h2 id="city-country">Search for a city</h2>
+                    <p id="current-date" class="date">--</p>
+                </div>
+                
+                <div class="weather-main">
+                    <div class="temperature-section">
+                        <div class="temp-display">
+                            <span id="current-temp" class="temp-value">--</span>
+                            <span class="temp-unit">°C</span>
+                        </div>
+                        <div class="weather-condition">
+                            <i id="weather-icon" class="fas fa-sun"></i>
+                            <span id="weather-desc">--</span>
+                        </div>
+                    </div>
+                    
+                    <div class="weather-details">
+                        <div class="detail-item">
+                            <i class="fas fa-temperature-low"></i>
+                            <div>
+                                <span class="label">Feels Like</span>
+                                <span id="feels-like" class="value">--°</span>
+                            </div>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fas fa-tint"></i>
+                            <div>
+                                <span class="label">Humidity</span>
+                                <span id="humidity" class="value">--%</span>
+                            </div>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fas fa-wind"></i>
+                            <div>
+                                <span class="label">Wind Speed</span>
+                                <span id="wind-speed" class="value">-- km/h</span>
+                            </div>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fas fa-cloud-rain"></i>
+                            <div>
+                                <span class="label">Precipitation</span>
+                                <span id="precipitation" class="value">-- mm</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Daily Forecast -->
+            <div class="daily-forecast card">
+                <h3 class="section-title">
+                    <i class="fas fa-calendar-alt"></i> 7-Day Forecast
+                </h3>
+                <div class="forecast-days" id="daily-forecast">
+                    <!-- Filled by JavaScript -->
+                </div>
+            </div>
+
+            <!-- Hourly Forecast -->
+            <div class="hourly-forecast card">
+                <div class="hourly-header">
+                    <h3 class="section-title">
+                        <i class="fas fa-clock"></i> Hourly Forecast
+                    </h3>
+                    <select id="day-selector" class="day-selector">
+                        <option value="0">Today</option>
+                        <option value="1">Tomorrow</option>
+                        <option value="2">Day 3</option>
+                        <option value="3">Day 4</option>
+                        <option value="4">Day 5</option>
+                        <option value="5">Day 6</option>
+                        <option value="6">Day 7</option>
+                    </select>
+                </div>
+                <div class="hourly-slider" id="hourly-forecast">
+                    <!-- Filled by JavaScript -->
+                </div>
+            </div>
+
+            <!-- Additional Info -->
+            <div class="additional-info grid">
+                <div class="info-card">
+                    <i class="fas fa-sunrise"></i>
+                    <div>
+                        <span class="label">Sunrise</span>
+                        <span id="sunrise" class="value">--:--</span>
+                    </div>
+                </div>
+                <div class="info-card">
+                    <i class="fas fa-sunset"></i>
+                    <div>
+                        <span class="label">Sunset</span>
+                        <span id="sunset" class="value">--:--</span>
+                    </div>
+                </div>
+                <div class="info-card">
+                    <i class="fas fa-eye"></i>
+                    <div>
+                        <span class="label">Visibility</span>
+                        <span id="visibility" class="value">-- km</span>
+                    </div>
+                </div>
+                <div class="info-card">
+                    <i class="fas fa-compress-alt"></i>
+                    <div>
+                        <span class="label">Pressure</span>
+                        <span id="pressure" class="value">-- hPa</span>
+                    </div>
+                </div>
+                <div class="info-card">
+                    <i class="fas fa-umbrella"></i>
+                    <div>
+                        <span class="label">UV Index</span>
+                        <span id="uv-index" class="value">--</span>
+                    </div>
+                </div>
+                <div class="info-card">
+                    <i class="fas fa-wind"></i>
+                    <div>
+                        <span class="label">Wind Gust</span>
+                        <span id="wind-gust" class="value">-- km/h</span>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="app-footer">
+            <p>© 2024 WeatherFlow Pro | Data provided by Open-Meteo & OpenStreetMap</p>
+            <p class="footer-links">
+                <a href="#"><i class="fas fa-code"></i> GitHub</a>
+                <a href="#"><i class="fas fa-question-circle"></i> Help</a>
+                <a href="#"><i class="fas fa-cog"></i> Settings</a>
+            </p>
+        </footer>
+
+        <!-- Error Notification -->
+        <div class="notification" id="notification">
+            <div class="notification-content">
+                <i class="fas fa-exclamation-triangle"></i>
+                <div>
+                    <strong>Error</strong>
+                    <p id="error-message">Unable to fetch weather data</p>
+                </div>
+                <button class="close-notification">&times;</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

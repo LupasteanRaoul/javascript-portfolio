@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>freeCodeCamp Forum Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-top">
+                <div class="logo-container">
+                    <img class="fcc-logo" src="https://cdn.freecodecamp.org/platform/universal/fcc_primary.svg" alt="freeCodeCamp logo">
+                    <div class="header-text">
+                        <h1 class="title">Community Forum Dashboard</h1>
+                        <p class="subtitle">Latest topics, discussions, and community activity</p>
+                    </div>
+                </div>
+                <div class="header-stats">
+                    <div class="stat">
+                        <i class="fas fa-users"></i>
+                        <span id="online-count">Loading...</span>
+                        <small>Online</small>
+                    </div>
+                    <div class="stat">
+                        <i class="fas fa-comments"></i>
+                        <span id="posts-today">0</span>
+                        <small>Today</small>
+                    </div>
+                    <div class="stat">
+                        <i class="fas fa-fire"></i>
+                        <span id="active-topics">0</span>
+                        <small>Active</small>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="header-controls">
+                <div class="search-container">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="search-input" placeholder="Search topics, users, or categories...">
+                    <button id="clear-search" class="clear-btn"><i class="fas fa-times"></i></button>
+                </div>
+                
+                <div class="filter-controls">
+                    <div class="dropdown">
+                        <button class="filter-btn">
+                            <i class="fas fa-filter"></i>
+                            <span id="filter-text">All Categories</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="dropdown-content">
+                            <div class="category-filter" id="category-filters">
+                                <!-- Categories will be loaded here -->
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="sort-controls">
+                        <label for="sort-select">Sort by:</label>
+                        <select id="sort-select">
+                            <option value="latest">Latest Activity</option>
+                            <option value="replies">Most Replies</option>
+                            <option value="views">Most Views</option>
+                            <option value="newest">Newest First</option>
+                            <option value="oldest">Oldest First</option>
+                        </select>
+                    </div>
+                    
+                    <button id="refresh-btn" class="refresh-btn">
+                        <i class="fas fa-sync-alt"></i>
+                        <span>Refresh</span>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Sidebar -->
+            <aside class="sidebar">
+                <div class="sidebar-section">
+                    <h3><i class="fas fa-chart-line"></i> Quick Stats</h3>
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-icon" style="background: var(--career);">
+                                <i class="fas fa-briefcase"></i>
+                            </div>
+                            <div class="stat-info">
+                                <span class="stat-number" id="career-count">0</span>
+                                <span class="stat-label">Career Topics</span>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon" style="background: var(--javascript);">
+                                <i class="fab fa-js"></i>
+                            </div>
+                            <div class="stat-info">
+                                <span class="stat-number" id="js-count">0</span>
+                                <span class="stat-label">JavaScript</span>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon" style="background: var(--python);">
+                                <i class="fab fa-python"></i>
+                            </div>
+                            <div class="stat-info">
+                                <span class="stat-number" id="python-count">0</span>
+                                <span class="stat-label">Python</span>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon" style="background: var(--support);">
+                                <i class="fas fa-hands-helping"></i>
+                            </div>
+                            <div class="stat-info">
+                                <span class="stat-number" id="support-count">0</span>
+                                <span class="stat-label">Support</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="sidebar-section">
+                    <h3><i class="fas fa-star"></i> Top Contributors</h3>
+                    <div class="contributors-list" id="contributors-list">
+                        <!-- Top contributors will be loaded here -->
+                    </div>
+                </div>
+                
+                <div class="sidebar-section">
+                    <h3><i class="fas fa-bolt"></i> Hot Topics</h3>
+                    <div class="hot-topics" id="hot-topics">
+                        <!-- Hot topics will be loaded here -->
+                    </div>
+                </div>
+                
+                <div class="sidebar-section">
+                    <h3><i class="fas fa-info-circle"></i> Forum Info</h3>
+                    <div class="info-box">
+                        <p><i class="fas fa-check-circle"></i> Be respectful and kind</p>
+                        <p><i class="fas fa-code"></i> Use code blocks for code</p>
+                        <p><i class="fas fa-search"></i> Search before posting</p>
+                        <p><i class="fas fa-flag"></i> Report inappropriate content</p>
+                        <a href="https://forum.freecodecamp.org" target="_blank" class="forum-link">
+                            <i class="fas fa-external-link-alt"></i> Visit Full Forum
+                        </a>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Main Forum Content -->
+            <div class="forum-content">
+                <div class="content-header">
+                    <h2><i class="fas fa-list-ul"></i> Latest Topics</h2>
+                    <div class="view-toggle">
+                        <button class="view-btn active" data-view="table">
+                            <i class="fas fa-table"></i>
+                        </button>
+                        <button class="view-btn" data-view="cards">
+                            <i class="fas fa-th-large"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Loading State -->
+                <div class="loading-container" id="loading">
+                    <div class="spinner"></div>
+                    <p>Loading forum data...</p>
+                </div>
+                
+                <!-- Error State -->
+                <div class="error-container" id="error-container" style="display: none;">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <h3>Unable to Load Data</h3>
+                    <p>Please check your connection and try again.</p>
+                    <button id="retry-btn" class="retry-btn">
+                        <i class="fas fa-redo"></i> Retry
+                    </button>
+                </div>
+                
+                <!-- Table View -->
+                <div class="table-view active" id="table-view">
+                    <div class="table-wrapper">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th class="topic-header" data-sort="title">
+                                        <span>Topic</span>
+                                        <i class="fas fa-sort"></i>
+                                    </th>
+                                    <th class="category-header" data-sort="category">
+                                        <span>Category</span>
+                                        <i class="fas fa-sort"></i>
+                                    </th>
+                                    <th class="replies-header" data-sort="replies">
+                                        <span>Replies</span>
+                                        <i class="fas fa-sort"></i>
+                                    </th>
+                                    <th class="views-header" data-sort="views">
+                                        <span>Views</span>
+                                        <i class="fas fa-sort"></i>
+                                    </th>
+                                    <th class="activity-header" data-sort="activity">
+                                        <span>Last Activity</span>
+                                        <i class="fas fa-sort"></i>
+                                    </th>
+                                    <th class="avatars-header">Participants</th>
+                                </tr>
+                            </thead>
+                            <tbody id="posts-container">
+                                <!-- Posts will be loaded here -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+                <!-- Cards View -->
+                <div class="cards-view" id="cards-view">
+                    <div class="cards-container" id="cards-container">
+                        <!-- Cards will be loaded here -->
+                    </div>
+                </div>
+                
+                <!-- Pagination -->
+                <div class="pagination" id="pagination">
+                    <button class="pagination-btn" id="prev-btn" disabled>
+                        <i class="fas fa-chevron-left"></i> Previous
+                    </button>
+                    <div class="page-info">
+                        <span id="page-info">Page 1 of 1</span>
+                    </div>
+                    <button class="pagination-btn" id="next-btn">
+                        Next <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+                
+                <!-- Empty State -->
+                <div class="empty-state" id="empty-state" style="display: none;">
+                    <i class="fas fa-comments"></i>
+                    <h3>No topics found</h3>
+                    <p>Try adjusting your search or filter to find what you're looking for.</p>
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>freeCodeCamp Forum</h4>
+                    <p>A community-driven platform for learning to code.</p>
+                    <p class="update-info">Data updates every 5 minutes</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Resources</h4>
+                    <a href="https://forum.freecodecamp.org" target="_blank">Forum Home</a>
+                    <a href="https://freecodecamp.org/learn" target="_blank">Curriculum</a>
+                    <a href="https://freecodecamp.org/news" target="_blank">News</a>
+                    <a href="https://freecodecamp.org/support" target="_blank">Support</a>
+                </div>
+                <div class="footer-section">
+                    <h4>Connect</h4>
+                    <div class="social-links">
+                        <a href="https://github.com/freeCodeCamp" target="_blank">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://twitter.com/freeCodeCamp" target="_blank">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/school/free-code-camp" target="_blank">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="https://www.youtube.com/freecodecamp" target="_blank">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2024 freeCodeCamp. This dashboard is not officially affiliated with freeCodeCamp.</p>
+                <p class="build-info">Build: <span id="build-version">1.0.0</span> | Last Updated: <span id="last-updated">Just now</span></p>
+            </div>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

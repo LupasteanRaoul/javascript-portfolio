@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bookmark Manager</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Main Section -->
+        <section id="main-section" class="section active">
+            <header>
+                <h1><i class="fas fa-bookmark"></i> Bookmark Manager</h1>
+                <p class="subtitle">Organize and manage your favorite websites</p>
+            </header>
+            
+            <div class="card">
+                <div class="form-group">
+                    <label for="category-dropdown">
+                        <i class="fas fa-folder"></i> Select Category:
+                    </label>
+                    <select id="category-dropdown" class="dropdown">
+                        <option value="news">📰 News</option>
+                        <option value="entertainment">🎬 Entertainment</option>
+                        <option value="work">💼 Work</option>
+                        <option value="education">📚 Education</option>
+                        <option value="social">👥 Social</option>
+                        <option value="miscellaneous">📦 Miscellaneous</option>
+                    </select>
+                </div>
+                
+                <div class="stats">
+                    <div class="stat-item">
+                        <span class="stat-number" id="total-bookmarks">0</span>
+                        <span class="stat-label">Total Bookmarks</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number" id="category-count">0</span>
+                        <span class="stat-label">In Category</span>
+                    </div>
+                </div>
+                
+                <div class="button-group">
+                    <button class="btn btn-primary" id="view-category-button">
+                        <i class="fas fa-eye"></i> View Category
+                    </button>
+                    <button class="btn btn-secondary" id="add-bookmark-button">
+                        <i class="fas fa-plus"></i> Add Bookmark
+                    </button>
+                </div>
+            </div>
+            
+            <div class="quick-links">
+                <h3><i class="fas fa-bolt"></i> Quick Actions</h3>
+                <button class="btn-small" id="clear-all-btn">
+                    <i class="fas fa-trash"></i> Clear All
+                </button>
+                <button class="btn-small" id="export-btn">
+                    <i class="fas fa-download"></i> Export
+                </button>
+                <button class="btn-small" id="import-btn">
+                    <i class="fas fa-upload"></i> Import
+                </button>
+            </div>
+        </section>
+
+        <!-- Add Bookmark Form -->
+        <section id="form-section" class="section hidden">
+            <div class="card form-card">
+                <div class="form-header">
+                    <h2><i class="fas fa-plus-circle"></i> Add Bookmark</h2>
+                    <p class="category-display">Category: <span class="category-name highlight">News</span></p>
+                </div>
+                
+                <form id="bookmark-form">
+                    <div class="form-group">
+                        <label for="name">
+                            <i class="fas fa-heading"></i> Bookmark Name:
+                        </label>
+                        <input type="text" id="name" placeholder="Enter bookmark name" required>
+                        <div class="error-message" id="name-error"></div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="url">
+                            <i class="fas fa-link"></i> URL:
+                        </label>
+                        <input type="url" id="url" placeholder="https://example.com" required>
+                        <div class="error-message" id="url-error"></div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="category">
+                            <i class="fas fa-tag"></i> Category:
+                        </label>
+                        <select id="category" class="dropdown">
+                            <option value="news">📰 News</option>
+                            <option value="entertainment">🎬 Entertainment</option>
+                            <option value="work">💼 Work</option>
+                            <option value="education">📚 Education</option>
+                            <option value="social">👥 Social</option>
+                            <option value="miscellaneous">📦 Miscellaneous</option>
+                        </select>
+                    </div>
+                    
+                    <div class="button-group">
+                        <button type="button" class="btn btn-outline" id="close-form-button">
+                            <i class="fas fa-arrow-left"></i> Cancel
+                        </button>
+                        <button type="submit" class="btn btn-success" id="add-bookmark-button-form">
+                            <i class="fas fa-save"></i> Save Bookmark
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+        <!-- Bookmark List Section -->
+        <section id="bookmark-list-section" class="section hidden">
+            <div class="card list-card">
+                <div class="list-header">
+                    <h2><i class="fas fa-list"></i> Category: <span class="category-name highlight">News</span></h2>
+                    <p id="bookmark-count">0 bookmarks</p>
+                </div>
+                
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="search-input" placeholder="Search bookmarks...">
+                </div>
+                
+                <div id="category-list" class="bookmark-list">
+                    <div class="empty-state">
+                        <i class="fas fa-bookmark fa-3x"></i>
+                        <p>No bookmarks in this category yet.</p>
+                    </div>
+                </div>
+                
+                <div class="list-actions">
+                    <button class="btn btn-danger" id="delete-bookmark-button" disabled>
+                        <i class="fas fa-trash"></i> Delete Selected
+                    </button>
+                    <button class="btn btn-outline" id="close-list-button">
+                        <i class="fas fa-arrow-left"></i> Back
+                    </button>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Notification Toast -->
+        <div id="toast" class="toast hidden">
+            <span id="toast-message"></span>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

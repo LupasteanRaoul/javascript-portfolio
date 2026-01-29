@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Algorithm Visualizer | Sorting & Pathfinding</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&family=Roboto+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="visualizer-container">
+        <!-- Header -->
+        <header class="visualizer-header">
+            <div class="logo">
+                <i class="fas fa-sort-amount-down"></i>
+                <h1>Algorithm Visualizer</h1>
+            </div>
+            <div class="header-stats">
+                <div class="stat">
+                    <span class="stat-label">Array Size</span>
+                    <span class="stat-value" id="array-size">30</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-label">Speed</span>
+                    <span class="stat-value" id="speed-value">Normal</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-label">Comparisons</span>
+                    <span class="stat-value" id="comparisons">0</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-label">Swaps</span>
+                    <span class="stat-value" id="swaps">0</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-label">Time</span>
+                    <span class="stat-value" id="time">0ms</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Visualization Area -->
+        <div class="visualization-area">
+            <div class="visualization-header">
+                <h2><i class="fas fa-chart-bar"></i> Sorting Visualization</h2>
+                <div class="complexity-info">
+                    <span class="complexity-badge" id="time-complexity">O(n²)</span>
+                    <span class="complexity-badge" id="space-complexity">O(1)</span>
+                </div>
+            </div>
+
+            <div class="array-container" id="array-container">
+                <!-- Bars will be generated here -->
+            </div>
+
+            <div class="legend-container">
+                <div class="legend-item">
+                    <div class="legend-color unsorted"></div>
+                    <span>Unsorted</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color comparing"></div>
+                    <span>Comparing</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color swapping"></div>
+                    <span>Swapping</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color sorted"></div>
+                    <span>Sorted</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color pivot"></div>
+                    <span>Pivot</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color min"></div>
+                    <span>Min/Max</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Controls Panel -->
+        <div class="controls-panel">
+            <!-- Algorithm Selection -->
+            <div class="control-section">
+                <h3><i class="fas fa-project-diagram"></i> Algorithm Type</h3>
+                <div class="algorithm-tabs">
+                    <button class="algo-tab active" data-type="sorting">Sorting</button>
+                    <button class="algo-tab" data-type="pathfinding">Pathfinding</button>
+                    <button class="algo-tab" data-type="searching">Searching</button>
+                </div>
+
+                <!-- Sorting Algorithms -->
+                <div class="algorithms-container active" id="sorting-algorithms">
+                    <div class="algorithms-grid">
+                        <button class="algorithm-btn" data-algo="bubble">
+                            <i class="fas fa-bubbles"></i>
+                            <span>Bubble Sort</span>
+                            <small>O(n²)</small>
+                        </button>
+                        <button class="algorithm-btn" data-algo="selection">
+                            <i class="fas fa-mouse-pointer"></i>
+                            <span>Selection Sort</span>
+                            <small>O(n²)</small>
+                        </button>
+                        <button class="algorithm-btn" data-algo="insertion">
+                            <i class="fas fa-arrow-right-to-bracket"></i>
+                            <span>Insertion Sort</span>
+                            <small>O(n²)</small>
+                        </button>
+                        <button class="algorithm-btn" data-algo="merge">
+                            <i class="fas fa-code-branch"></i>
+                            <span>Merge Sort</span>
+                            <small>O(n log n)</small>
+                        </button>
+                        <button class="algorithm-btn" data-algo="quick">
+                            <i class="fas fa-bolt"></i>
+                            <span>Quick Sort</span>
+                            <small>O(n log n)</small>
+                        </button>
+                        <button class="algorithm-btn" data-algo="heap">
+                            <i class="fas fa-layer-group"></i>
+                            <span>Heap Sort</span>
+                            <small>O(n log n)</small>
+                        </button>
+                        <button class="algorithm-btn" data-algo="shell">
+                            <i class="fas fa-wave-square"></i>
+                            <span>Shell Sort</span>
+                            <small>O(n log n)</small>
+                        </button>
+                        <button class="algorithm-btn" data-algo="counting">
+                            <i class="fas fa-hashtag"></i>
+                            <span>Counting Sort</span>
+                            <small>O(n + k)</small>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Pathfinding Algorithms (Placeholder) -->
+                <div class="algorithms-container" id="pathfinding-algorithms">
+                    <div class="algorithms-grid">
+                        <button class="algorithm-btn disabled" data-algo="dijkstra">
+                            <i class="fas fa-road"></i>
+                            <span>Dijkstra's</span>
+                            <small>Coming Soon</small>
+                        </button>
+                        <button class="algorithm-btn disabled" data-algo="astar">
+                            <i class="fas fa-star"></i>
+                            <span>A* Search</span>
+                            <small>Coming Soon</small>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Array Configuration -->
+            <div class="control-section">
+                <h3><i class="fas fa-sliders-h"></i> Array Configuration</h3>
+                <div class="control-group">
+                    <div class="slider-control">
+                        <label for="array-size-slider">
+                            <i class="fas fa-ruler"></i> Array Size: <span id="size-value">30</span>
+                        </label>
+                        <input type="range" id="array-size-slider" min="5" max="100" value="30">
+                        <div class="slider-labels">
+                            <span>5</span>
+                            <span>100</span>
+                        </div>
+                    </div>
+
+                    <div class="slider-control">
+                        <label for="speed-slider">
+                            <i class="fas fa-tachometer-alt"></i> Speed: <span id="speed-display">Normal</span>
+                        </label>
+                        <input type="range" id="speed-slider" min="1" max="100" value="50">
+                        <div class="slider-labels">
+                            <span>Slow</span>
+                            <span>Fast</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="array-type-buttons">
+                    <button class="array-type-btn active" data-type="random">
+                        <i class="fas fa-random"></i> Random
+                    </button>
+                    <button class="array-type-btn" data-type="nearly-sorted">
+                        <i class="fas fa-sort-amount-up"></i> Nearly Sorted
+                    </button>
+                    <button class="array-type-btn" data-type="reverse-sorted">
+                        <i class="fas fa-sort-amount-down-alt"></i> Reverse Sorted
+                    </button>
+                    <button class="array-type-btn" data-type="few-unique">
+                        <i class="fas fa-recycle"></i> Few Unique
+                    </button>
+                </div>
+            </div>
+
+            <!-- Control Buttons -->
+            <div class="control-section">
+                <h3><i class="fas fa-gamepad"></i> Controls</h3>
+                <div class="action-buttons">
+                    <button class="action-btn generate" id="generate-btn">
+                        <i class="fas fa-sync-alt"></i>
+                        <span>Generate Array</span>
+                    </button>
+                    <button class="action-btn sort" id="sort-btn">
+                        <i class="fas fa-play"></i>
+                        <span>Start Sorting</span>
+                    </button>
+                    <button class="action-btn pause" id="pause-btn" disabled>
+                        <i class="fas fa-pause"></i>
+                        <span>Pause</span>
+                    </button>
+                    <button class="action-btn reset" id="reset-btn">
+                        <i class="fas fa-undo"></i>
+                        <span>Reset</span>
+                    </button>
+                </div>
+
+                <div class="additional-controls">
+                    <button class="extra-btn" id="step-btn">
+                        <i class="fas fa-step-forward"></i> Step Forward
+                    </button>
+                    <button class="extra-btn" id="skip-btn">
+                        <i class="fas fa-forward"></i> Skip to End
+                    </button>
+                    <button class="extra-btn" id="compare-btn">
+                        <i class="fas fa-balance-scale"></i> Compare Algorithms
+                    </button>
+                </div>
+            </div>
+
+            <!-- Algorithm Information -->
+            <div class="control-section info-section">
+                <h3><i class="fas fa-info-circle"></i> Algorithm Info</h3>
+                <div class="algorithm-info" id="algorithm-info">
+                    <h4 id="current-algo">Bubble Sort</h4>
+                    <p id="algo-description">
+                        A simple comparison-based algorithm that repeatedly steps through the list,
+                        compares adjacent elements and swaps them if they are in the wrong order.
+                    </p>
+                    <div class="complexity-info">
+                        <div class="complexity-item">
+                            <span class="complexity-label">Time Complexity:</span>
+                            <span class="complexity-value" id="algo-time">O(n²)</span>
+                        </div>
+                        <div class="complexity-item">
+                            <span class="complexity-label">Space Complexity:</span>
+                            <span class="complexity-value" id="algo-space">O(1)</span>
+                        </div>
+                        <div class="complexity-item">
+                            <span class="complexity-label">Stable:</span>
+                            <span class="complexity-value" id="algo-stable">Yes</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Steps Visualization -->
+        <div class="steps-container">
+            <div class="steps-header">
+                <h3><i class="fas fa-list-ol"></i> Sorting Steps</h3>
+                <button class="clear-steps" id="clear-steps">
+                    <i class="fas fa-trash"></i> Clear
+                </button>
+            </div>
+            <div class="steps-list" id="steps-list">
+                <!-- Steps will be added here -->
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="visualizer-footer">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4><i class="fas fa-code"></i> Visualization Features</h4>
+                    <ul>
+                        <li>Real-time algorithm visualization</li>
+                        <li>Multiple sorting algorithms</li>
+                        <li>Step-by-step execution</li>
+                        <li>Performance metrics</li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4><i class="fas fa-chart-line"></i> Current Stats</h4>
+                    <div class="current-stats">
+                        <div class="current-stat">
+                            <span>Array Access:</span>
+                            <span id="array-access">0</span>
+                        </div>
+                        <div class="current-stat">
+                            <span>Iterations:</span>
+                            <span id="iterations">0</span>
+                        </div>
+                        <div class="current-stat">
+                            <span>Memory Usage:</span>
+                            <span id="memory">0 KB</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4><i class="fas fa-cog"></i> Settings</h4>
+                    <div class="settings-buttons">
+                        <button class="setting-btn" id="sound-toggle">
+                            <i class="fas fa-volume-up"></i> Sound
+                        </button>
+                        <button class="setting-btn" id="theme-toggle">
+                            <i class="fas fa-moon"></i> Theme
+                        </button>
+                        <button class="setting-btn" id="fullscreen-btn">
+                            <i class="fas fa-expand"></i> Fullscreen
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>Algorithm Visualizer © 2024 | Educational Tool for Understanding Sorting Algorithms</p>
+                <p class="version">Version: <span id="version">2.0.0</span></p>
+            </div>
+        </footer>
+
+        <!-- Compare Modal -->
+        <div class="modal" id="compare-modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2><i class="fas fa-balance-scale"></i> Algorithm Comparison</h2>
+                    <button class="close-modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="comparison-chart" id="comparison-chart">
+                        <!-- Comparison chart will be generated here -->
+                    </div>
+                    <div class="comparison-results" id="comparison-results">
+                        <!-- Comparison results will be shown here -->
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" id="run-comparison">
+                        <i class="fas fa-play"></i> Run Comparison
+                    </button>
+                    <button class="btn btn-primary" id="close-comparison">
+                        <i class="fas fa-times"></i> Close
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

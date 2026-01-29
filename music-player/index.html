@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Lato&family=Roboto+Mono&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <title>Music Player - Professional Portfolio Project</title>
+</head>
+<body>
+  <div class="container">
+    <div class="player">
+      <div class="player-bar">
+        <div class="parallel-lines">
+          <div></div>
+          <div></div>
+        </div>
+        <h1 class="fcc-title">
+          <i class="fas fa-music"></i> Music Player
+        </h1>
+        <div class="parallel-lines">
+          <div></div>
+          <div></div>
+        </div>
+      </div>
+      
+      <div class="player-content">
+        <div id="player-album-art">
+          <img src="https://cdn.freecodecamp.org/curriculum/js-music-player/quincy-larson-album-art.jpg"
+               alt="song cover art" id="album-art" />
+          <div class="album-overlay">
+            <div class="playing-indicator" id="playing-indicator">
+              <i class="fas fa-volume-up"></i>
+            </div>
+          </div>
+        </div>
+        
+        <div class="player-display">
+          <div class="player-display-song-artist">
+            <p id="player-song-title">Select a song</p>
+            <p id="player-song-artist">Artist</p>
+          </div>
+          
+          <!-- Progress Bar -->
+          <div class="progress-container">
+            <div class="progress" id="progress"></div>
+            <input type="range" id="progress-slider" min="0" max="100" value="0" class="progress-slider" 
+                   aria-label="Song progress">
+          </div>
+          
+          <div class="time-display">
+            <span id="current-time">0:00</span>
+            <span id="duration">0:00</span>
+          </div>
+          
+          <!-- Main Controls -->
+          <div class="player-buttons">
+            <button id="shuffle" class="control-btn" aria-label="Shuffle" title="Shuffle">
+              <i class="fas fa-random"></i>
+            </button>
+            <button id="previous" class="control-btn" aria-label="Previous" title="Previous">
+              <i class="fas fa-step-backward"></i>
+            </button>
+            <button id="play" class="play control-btn" aria-label="Play" title="Play">
+              <i class="fas fa-play"></i>
+            </button>
+            <button id="pause" class="pause control-btn" aria-label="Pause" title="Pause">
+              <i class="fas fa-pause"></i>
+            </button>
+            <button id="next" class="control-btn" aria-label="Next" title="Next">
+              <i class="fas fa-step-forward"></i>
+            </button>
+            <button id="repeat" class="control-btn" aria-label="Repeat" title="Repeat">
+              <i class="fas fa-redo"></i>
+            </button>
+          </div>
+          
+          <!-- Volume Control -->
+          <div class="volume-control">
+            <button id="mute" class="control-btn" aria-label="Mute" title="Mute">
+              <i class="fas fa-volume-up"></i>
+            </button>
+            <input type="range" id="volume-slider" min="0" max="100" value="80" 
+                   aria-label="Volume control" class="volume-slider">
+          </div>
+          
+          <!-- Playback Speed -->
+          <div class="speed-control">
+            <span class="speed-label">Speed:</span>
+            <select id="speed-select" aria-label="Playback speed">
+              <option value="0.5">0.5x</option>
+              <option value="0.75">0.75x</option>
+              <option value="1" selected>1x</option>
+              <option value="1.25">1.25x</option>
+              <option value="1.5">1.5x</option>
+              <option value="2">2x</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Playlist with Search -->
+    <div class="playlist">
+      <div class="playlist-bar">
+        <div class="parallel-lines">
+          <div></div>
+          <div></div>
+        </div>
+        <h2 class="playlist-title">
+          <i class="fas fa-list"></i> Playlist
+          <div class="playlist-search-container">
+            <input type="text" id="playlist-search" placeholder="Search songs..." aria-label="Search songs">
+            <i class="fas fa-search"></i>
+          </div>
+        </h2>
+        <div class="parallel-lines">
+          <div></div>
+          <div></div>
+        </div>
+      </div>
+      
+      <ul id="playlist-songs">
+        <!-- Songs will be dynamically added here -->
+      </ul>
+      
+      <div class="playlist-info">
+        <div class="playlist-stats">
+          <span id="song-count">10 songs</span>
+          <span id="total-duration">Total: 35:12</span>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Keyboard Shortcuts Help -->
+    <div class="shortcuts-help">
+      <button id="toggle-help" class="help-btn" aria-label="Show keyboard shortcuts">
+        <i class="fas fa-keyboard"></i> Shortcuts
+      </button>
+      <div id="shortcuts-modal" class="shortcuts-modal hidden">
+        <h3><i class="fas fa-keyboard"></i> Keyboard Shortcuts</h3>
+        <ul>
+          <li><kbd>Space</kbd> - Play/Pause</li>
+          <li><kbd>→</kbd> - Next song</li>
+          <li><kbd>←</kbd> - Previous song</li>
+          <li><kbd>M</kbd> - Mute/Unmute</li>
+          <li><kbd>↑</kbd> - Volume up</li>
+          <li><kbd>↓</kbd> - Volume down</li>
+          <li><kbd>F</kbd> - Toggle fullscreen</li>
+        </ul>
+        <button id="close-help" class="close-btn">Close</button>
+      </div>
+    </div>
+  </div>
+  
+  <script src="script.js"></script>
+</body>
+</html>

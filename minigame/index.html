@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock Paper Scissors Arena | Classic Game</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="game-container">
+        <!-- Game Header -->
+        <header class="game-header">
+            <div class="logo">
+                <i class="fas fa-hand-rock"></i>
+                <h1>Rock Paper Scissors Arena</h1>
+            </div>
+            <p class="game-subtitle">Classic game with modern twist. First to 5 wins!</p>
+        </header>
+
+        <!-- Game Stats -->
+        <div class="stats-container">
+            <div class="stat-card player-stat">
+                <div class="stat-header">
+                    <i class="fas fa-user"></i>
+                    <h3>PLAYER</h3>
+                </div>
+                <div class="stat-score">
+                    <span class="score-value" id="player-score">0</span>
+                    <span class="score-label">Wins</span>
+                </div>
+                <div class="stat-choice" id="player-choice">
+                    <div class="choice-placeholder">?</div>
+                </div>
+            </div>
+
+            <div class="stat-card vs-stat">
+                <div class="vs-container">
+                    <span class="vs-text">VS</span>
+                    <div class="round-counter">
+                        <span class="round-label">ROUND</span>
+                        <span class="round-number" id="round-number">1</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="stat-card computer-stat">
+                <div class="stat-header">
+                    <i class="fas fa-robot"></i>
+                    <h3>COMPUTER</h3>
+                </div>
+                <div class="stat-score">
+                    <span class="score-value" id="computer-score">0</span>
+                    <span class="score-label">Wins</span>
+                </div>
+                <div class="stat-choice" id="computer-choice">
+                    <div class="choice-placeholder">?</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Game Arena -->
+        <div class="arena-container">
+            <div class="arena-header">
+                <h2><i class="fas fa-gamepad"></i> Choose Your Weapon</h2>
+                <div class="game-info">
+                    <span class="info-item" id="win-streak">
+                        <i class="fas fa-fire"></i> Streak: <span id="streak-count">0</span>
+                    </span>
+                    <span class="info-item" id="timer">
+                        <i class="fas fa-clock"></i> Round: <span id="round-time">0s</span>
+                    </span>
+                </div>
+            </div>
+
+            <!-- Player Choices -->
+            <div class="choices-container">
+                <div class="choice-card" data-choice="rock">
+                    <div class="choice-icon rock">
+                        <i class="fas fa-hand-rock"></i>
+                    </div>
+                    <h3>ROCK</h3>
+                    <p class="choice-desc">Crushes scissors</p>
+                    <button class="choice-btn" id="rock-btn">
+                        <i class="fas fa-fist-raised"></i> Select Rock
+                    </button>
+                </div>
+
+                <div class="choice-card" data-choice="paper">
+                    <div class="choice-icon paper">
+                        <i class="fas fa-hand-paper"></i>
+                    </div>
+                    <h3>PAPER</h3>
+                    <p class="choice-desc">Covers rock</p>
+                    <button class="choice-btn" id="paper-btn">
+                        <i class="fas fa-hand-paper"></i> Select Paper
+                    </button>
+                </div>
+
+                <div class="choice-card" data-choice="scissors">
+                    <div class="choice-icon scissors">
+                        <i class="fas fa-hand-scissors"></i>
+                    </div>
+                    <h3>SCISSORS</h3>
+                    <p class="choice-desc">Cuts paper</p>
+                    <button class="choice-btn" id="scissors-btn">
+                        <i class="fas fa-cut"></i> Select Scissors
+                    </button>
+                </div>
+            </div>
+
+            <!-- Game Controls -->
+            <div class="controls-container">
+                <button class="control-btn" id="auto-play-btn">
+                    <i class="fas fa-robot"></i> Auto Play
+                </button>
+                <button class="control-btn" id="hint-btn">
+                    <i class="fas fa-lightbulb"></i> Get Hint
+                </button>
+                <button class="control-btn" id="reset-btn">
+                    <i class="fas fa-redo"></i> Reset Game
+                </button>
+            </div>
+        </div>
+
+        <!-- Results Display -->
+        <div class="results-container">
+            <div class="results-header">
+                <h3><i class="fas fa-trophy"></i> Round Results</h3>
+                <div class="results-toggle">
+                    <button class="toggle-btn active" data-view="current">Current</button>
+                    <button class="toggle-btn" data-view="history">History</button>
+                </div>
+            </div>
+
+            <!-- Current Result -->
+            <div class="result-view active" id="current-result">
+                <div class="result-message" id="results-msg">
+                    <div class="welcome-message">
+                        <i class="fas fa-hand-peace"></i>
+                        <h3>Welcome to the Arena!</h3>
+                        <p>Choose your weapon to start the battle. First player to 5 wins takes the crown!</p>
+                    </div>
+                </div>
+                <div class="result-details">
+                    <div class="detail-item">
+                        <span class="detail-label">Round Winner:</span>
+                        <span class="detail-value" id="round-winner">-</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Player Choice:</span>
+                        <span class="detail-value" id="player-choice-text">-</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Computer Choice:</span>
+                        <span class="detail-value" id="computer-choice-text">-</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Game History -->
+            <div class="result-view" id="history-result">
+                <div class="history-header">
+                    <h4>Game History</h4>
+                    <button class="clear-history" id="clear-history">
+                        <i class="fas fa-trash"></i> Clear
+                    </button>
+                </div>
+                <div class="history-list" id="history-list">
+                    <!-- History items will be added here -->
+                </div>
+            </div>
+
+            <!-- Winner Announcement -->
+            <div class="winner-container" id="winner-msg" style="display: none;">
+                <div class="winner-card">
+                    <div class="winner-icon">
+                        <i class="fas fa-crown"></i>
+                    </div>
+                    <h2 id="winner-text">Player Wins the Game!</h2>
+                    <p id="winner-details">Congratulations! You've defeated the computer.</p>
+                    <div class="winner-stats">
+                        <div class="winner-stat">
+                            <span class="stat-name">Total Rounds</span>
+                            <span class="stat-value" id="total-rounds">0</span>
+                        </div>
+                        <div class="winner-stat">
+                            <span class="stat-name">Win Rate</span>
+                            <span class="stat-value" id="win-rate">0%</span>
+                        </div>
+                        <div class="winner-stat">
+                            <span class="stat-name">Best Streak</span>
+                            <span class="stat-value" id="best-streak">0</span>
+                        </div>
+                    </div>
+                    <button class="play-again-btn" id="play-again-btn">
+                        <i class="fas fa-play-circle"></i> Play Again
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Game Rules -->
+        <div class="rules-container">
+            <div class="rules-header">
+                <h3><i class="fas fa-book"></i> Game Rules</h3>
+                <button class="rules-toggle" id="rules-toggle">
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+            </div>
+            <div class="rules-content" id="rules-content">
+                <div class="rules-grid">
+                    <div class="rule-item">
+                        <div class="rule-icon win">
+                            <i class="fas fa-trophy"></i>
+                        </div>
+                        <h4>Winning Moves</h4>
+                        <ul>
+                            <li><strong>Rock</strong> crushes Scissors</li>
+                            <li><strong>Scissors</strong> cuts Paper</li>
+                            <li><strong>Paper</strong> covers Rock</li>
+                        </ul>
+                    </div>
+                    <div class="rule-item">
+                        <div class="rule-icon tie">
+                            <i class="fas fa-handshake"></i>
+                        </div>
+                        <h4>Tie Game</h4>
+                        <p>If both players choose the same option, the round is a tie and no points are awarded.</p>
+                    </div>
+                    <div class="rule-item">
+                        <div class="rule-icon score">
+                            <i class="fas fa-flag-checkered"></i>
+                        </div>
+                        <h4>Game Objective</h4>
+                        <p>Be the first to win <strong>5 rounds</strong> to claim victory in the arena.</p>
+                    </div>
+                    <div class="rule-item">
+                        <div class="rule-icon tips">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <h4>Pro Tips</h4>
+                        <ul>
+                            <li>Watch for patterns in computer choices</li>
+                            <li>Use the "Get Hint" feature for strategy advice</li>
+                            <li>Try Auto Play to see computer strategies</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="game-footer">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Rock Paper Scissors Arena</h4>
+                    <p>A modern take on the classic hand game. Built with HTML, CSS & JavaScript.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Game Stats</h4>
+                    <div class="footer-stats">
+                        <div class="footer-stat">
+                            <span class="stat-label">Games Played:</span>
+                            <span class="stat-value" id="total-games">0</span>
+                        </div>
+                        <div class="footer-stat">
+                            <span class="stat-label">Player Wins:</span>
+                            <span class="stat-value" id="player-wins">0</span>
+                        </div>
+                        <div class="footer-stat">
+                            <span class="stat-label">Computer Wins:</span>
+                            <span class="stat-value" id="computer-wins">0</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Actions</h4>
+                    <div class="footer-actions">
+                        <button class="footer-btn" id="sound-toggle">
+                            <i class="fas fa-volume-up"></i> Sound
+                        </button>
+                        <button class="footer-btn" id="theme-toggle">
+                            <i class="fas fa-moon"></i> Theme
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2024 Rock Paper Scissors Arena. All rights reserved.</p>
+                <p class="version">Version: <span id="game-version">2.0.0</span></p>
+            </div>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
