@@ -1,4 +1,4 @@
-// Portfolio Data
+// Portfolio Data - Modifică căile pentru structura ta
 const portfolioProjects = [
     {
         id: 1,
@@ -6,17 +6,17 @@ const portfolioProjects = [
         description: "A fully functional e-commerce shopping cart with local storage persistence, product filtering, and real-time calculations.",
         icon: "fas fa-shopping-cart",
         technologies: ["HTML", "CSS", "JavaScript", "Local Storage"],
-        demoLink: "projects/01-shopping-cart/index.html",
-        githubLink: "https://github.com/LupasteanRaoul/javascript-portfolio/tree/main/projects/01-shopping-cart"
+        demoLink: "./shopping-cart/index.html",  // Schimbat aici!
+        githubLink: "https://github.com/LupasteanRaoul/javascript-portfolio/tree/main/shopping-cart"
     },
     {
         id: 2,
-        title: "Algorithm Visualizer",
+        title: "Sorting Visualizer",
         description: "Interactive sorting algorithm visualization with multiple algorithms, step-by-step execution, and performance metrics.",
         icon: "fas fa-sort-amount-down",
         technologies: ["HTML", "CSS", "JavaScript", "Algorithms"],
-        demoLink: "projects/02-sorting-visualizer/index.html",
-        githubLink: "https://github.com/LupasteanRaoul/javascript-portfolio/tree/main/projects/02-sorting-visualizer"
+        demoLink: "./sorting-visualizer/index.html",  // Schimbat aici!
+        githubLink: "https://github.com/LupasteanRaoul/javascript-portfolio/tree/main/sorting-visualizer"
     },
     {
         id: 3,
@@ -24,8 +24,8 @@ const portfolioProjects = [
         description: "Classic game with modern UI, win tracking, statistics, and multiple gameplay modes including auto-play.",
         icon: "fas fa-hand-rock",
         technologies: ["HTML", "CSS", "JavaScript", "Game Logic"],
-        demoLink: "projects/03-minigame/index.html",
-        githubLink: "https://github.com/LupasteanRaoul/javascript-portfolio/tree/main/projects/03-minigame"
+        demoLink: "./minigame/index.html",  // Schimbat aici!
+        githubLink: "https://github.com/LupasteanRaoul/javascript-portfolio/tree/main/minigame"
     },
     {
         id: 4,
@@ -33,8 +33,8 @@ const portfolioProjects = [
         description: "Audio player with playlist management, progress bar, volume control, and visualizations.",
         icon: "fas fa-music",
         technologies: ["HTML", "CSS", "JavaScript", "Audio API"],
-        demoLink: "projects/04-music-player/index.html",
-        githubLink: "https://github.com/LupasteanRaoul/javascript-portfolio/tree/main/projects/04-music-player"
+        demoLink: "./music-player/index.html",  // Schimbat aici!
+        githubLink: "https://github.com/LupasteanRaoul/javascript-portfolio/tree/main/music-player"
     },
     {
         id: 5,
@@ -42,8 +42,8 @@ const portfolioProjects = [
         description: "Weather forecast application with location detection, temperature units, and animated weather icons.",
         icon: "fas fa-cloud-sun",
         technologies: ["HTML", "CSS", "JavaScript", "API Integration"],
-        demoLink: "projects/05-weather-app/index.html",
-        githubLink: "https://github.com/LupasteanRaoul/javascript-portfolio/tree/main/projects/05-weather-app"
+        demoLink: "./weather-app/index.html",  // Schimbat aici!
+        githubLink: "https://github.com/LupasteanRaoul/javascript-portfolio/tree/main/weather-app"
     },
     {
         id: 6,
@@ -51,8 +51,8 @@ const portfolioProjects = [
         description: "Task management application with CRUD operations, filtering, and local storage persistence.",
         icon: "fas fa-tasks",
         technologies: ["HTML", "CSS", "JavaScript", "CRUD"],
-        demoLink: "projects/06-todo-app/index.html",
-        githubLink: "https://github.com/LupasteanRaoul/javascript-portfolio/tree/main/projects/06-todo-app"
+        demoLink: "./todo-app/index.html",  // Schimbat aici!
+        githubLink: "https://github.com/LupasteanRaoul/javascript-portfolio/tree/main/todo-app"
     },
     {
         id: 7,
@@ -60,8 +60,8 @@ const portfolioProjects = [
         description: "Interactive drum pad with multiple sound kits, recording, and playback functionality.",
         icon: "fas fa-drum",
         technologies: ["HTML", "CSS", "JavaScript", "Audio"],
-        demoLink: "projects/07-drum-machine/index.html",
-        githubLink: "https://github.com/LupasteanRaoul/javascript-portfolio/tree/main/projects/07-drum-machine"
+        demoLink: "./drum-machine/index.html",  // Schimbat aici!
+        githubLink: "https://github.com/LupasteanRaoul/javascript-portfolio/tree/main/drum-machine"
     },
     {
         id: 8,
@@ -69,8 +69,8 @@ const portfolioProjects = [
         description: "Form validation with real-time feedback, custom inputs, and submission handling.",
         icon: "fas fa-user-edit",
         technologies: ["HTML", "CSS", "JavaScript", "Form Validation"],
-        demoLink: "projects/08-customer-form/index.html",
-        githubLink: "https://github.com/LupasteanRaoul/javascript-portfolio/tree/main/projects/08-customer-form"
+        demoLink: "./customer-form/index.html",  // Schimbat aici!
+        githubLink: "https://github.com/LupasteanRaoul/javascript-portfolio/tree/main/customer-form"
     },
     {
         id: 9,
@@ -78,8 +78,8 @@ const portfolioProjects = [
         description: "Bookmark organizer with categories, search functionality, and export options.",
         icon: "fas fa-bookmark",
         technologies: ["HTML", "CSS", "JavaScript", "Local Storage"],
-        demoLink: "projects/09-bookmark-manager/index.html",
-        githubLink: "https://github.com/LupasteanRaoul/javascript-portfolio/tree/main/projects/09-bookmark-manager"
+        demoLink: "./bookmark-manager/index.html",  // Schimbat aici!
+        githubLink: "https://github.com/LupasteanRaoul/javascript-portfolio/tree/main/bookmark-manager"
     },
     {
         id: 10,
@@ -87,8 +87,8 @@ const portfolioProjects = [
         description: "User ranking system with sorting, filtering, and achievement badges.",
         icon: "fas fa-trophy",
         technologies: ["HTML", "CSS", "JavaScript", "Data Sorting"],
-        demoLink: "projects/10-forum-leaderboard/index.html",
-        githubLink: "https://github.com/LupasteanRaoul/javascript-portfolio/tree/main/projects/10-forum-leaderboard"
+        demoLink: "./forum-leaderboard/index.html",  // Schimbat aici!
+        githubLink: "https://github.com/LupasteanRaoul/javascript-portfolio/tree/main/forum-leaderboard"
     }
 ];
 
@@ -102,6 +102,7 @@ document.addEventListener('DOMContentLoaded', function() {
     loadProjects();
     setupEventListeners();
     updateProjectCount();
+    checkProjectAvailability();
 });
 
 // Load Projects into Grid
@@ -134,7 +135,7 @@ function createProjectCard(project) {
                 ).join('')}
             </div>
             <div class="project-footer">
-                <a href="${project.demoLink}" class="project-link demo" target="_blank">
+                <a href="${project.demoLink}" class="project-link demo" target="_blank" id="demo-${project.id}">
                     <i class="fas fa-eye"></i> Live Demo
                 </a>
                 <a href="${project.githubLink}" class="project-link" target="_blank">
@@ -151,6 +152,30 @@ function createProjectCard(project) {
 function updateProjectCount() {
     if (projectCountElement) {
         projectCountElement.textContent = portfolioProjects.length;
+    }
+}
+
+// Check if projects exist
+async function checkProjectAvailability() {
+    for (const project of portfolioProjects) {
+        try {
+            const response = await fetch(project.demoLink, { method: 'HEAD' });
+            const demoLink = document.getElementById(`demo-${project.id}`);
+            
+            if (!response.ok) {
+                // Proiectul nu există - dezactivează butonul
+                if (demoLink) {
+                    demoLink.style.opacity = '0.6';
+                    demoLink.style.cursor = 'not-allowed';
+                    demoLink.onclick = (e) => {
+                        e.preventDefault();
+                        alert(`Project "${project.title}" is not available yet. Please check back soon!`);
+                    };
+                }
+            }
+        } catch (error) {
+            console.log(`Project ${project.title} not available:`, error);
+        }
     }
 }
 
@@ -189,66 +214,47 @@ function setupEventListeners() {
         });
     });
     
-    // Theme Toggle (optional)
-    const themeToggle = document.getElementById('theme-toggle');
-    if (themeToggle) {
-        themeToggle.addEventListener('click', function() {
-            document.body.classList.toggle('dark-theme');
-            const icon = this.querySelector('i');
-            if (document.body.classList.contains('dark-theme')) {
-                icon.className = 'fas fa-sun';
-                localStorage.setItem('theme', 'dark');
-            } else {
-                icon.className = 'fas fa-moon';
-                localStorage.setItem('theme', 'light');
-            }
-        });
-        
-        // Load saved theme
-        const savedTheme = localStorage.getItem('theme');
-        if (savedTheme === 'dark') {
-            document.body.classList.add('dark-theme');
-            const icon = themeToggle.querySelector('i');
-            icon.className = 'fas fa-sun';
+    // Add hover effect to project cards
+    document.addEventListener('mouseover', function(e) {
+        if (e.target.closest('.project-card')) {
+            const card = e.target.closest('.project-card');
+            card.style.transform = 'translateY(-5px)';
         }
-    }
+    });
+    
+    document.addEventListener('mouseout', function(e) {
+        if (e.target.closest('.project-card')) {
+            const card = e.target.closest('.project-card');
+            card.style.transform = 'translateY(0)';
+        }
+    });
 }
 
-// Add CSS for dark theme
-const darkThemeCSS = `
-    body.dark-theme {
-        background-color: #1a1a1a;
-        color: #ffffff;
+// Add CSS for project status
+const style = document.createElement('style');
+style.textContent = `
+    .project-link.disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+        pointer-events: none;
     }
     
-    body.dark-theme .navbar {
-        background-color: #2d2d2d;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    .project-status {
+        display: inline-block;
+        font-size: 0.7rem;
+        padding: 2px 8px;
+        border-radius: 12px;
+        margin-left: 8px;
+        background: #f59e0b;
+        color: white;
     }
     
-    body.dark-theme .project-card {
-        background-color: #2d2d2d;
-        border-color: #404040;
+    .project-status.available {
+        background: #10b981;
     }
     
-    body.dark-theme .about-card {
-        background-color: #2d2d2d;
-    }
-    
-    body.dark-theme .tech-stack {
-        background-color: #2d2d2d;
-    }
-    
-    body.dark-theme .contact-item {
-        background-color: #2d2d2d;
-    }
-    
-    body.dark-theme .footer {
-        background-color: #0d0d0d;
+    .project-status.unavailable {
+        background: #ef4444;
     }
 `;
-
-// Inject dark theme CSS
-const style = document.createElement('style');
-style.textContent = darkThemeCSS;
 document.head.appendChild(style);
