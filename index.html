@@ -4,260 +4,237 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Raoul Lupastean - JavaScript Portfolio</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', system-ui, sans-serif;
-        }
-        
-        body {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            padding: 20px;
-        }
-        
-        .portfolio-container {
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 20px;
-            padding: 40px;
-            max-width: 1200px;
-            margin: 20px auto;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-        }
-        
-        .header {
-            text-align: center;
-            margin-bottom: 40px;
-        }
-        
-        .header h1 {
-            color: #2d3436;
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-        }
-        
-        .header .highlight {
-            color: #6c5ce7;
-            font-weight: 700;
-        }
-        
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 25px;
-            margin-bottom: 40px;
-        }
-        
-        .project-card {
-            background: white;
-            border-radius: 15px;
-            padding: 25px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-            transition: all 0.3s ease;
-            border: 2px solid transparent;
-        }
-        
-        .project-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(108, 92, 231, 0.2);
-            border-color: #6c5ce7;
-        }
-        
-        .project-card h3 {
-            color: #2d3436;
-            margin-bottom: 15px;
-            font-size: 1.3rem;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        .project-card p {
-            color: #636e72;
-            margin-bottom: 20px;
-            line-height: 1.5;
-        }
-        
-        .project-links {
-            display: flex;
-            gap: 10px;
-        }
-        
-        .btn {
-            padding: 10px 20px;
-            border-radius: 10px;
-            text-decoration: none;
-            font-weight: 600;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            transition: all 0.3s ease;
-            font-size: 0.9rem;
-        }
-        
-        .btn-primary {
-            background: #6c5ce7;
-            color: white;
-        }
-        
-        .btn-primary:hover {
-            background: #5b4fcf;
-            transform: scale(1.05);
-        }
-        
-        .btn-secondary {
-            background: #dfe6e9;
-            color: #2d3436;
-        }
-        
-        .btn-secondary:hover {
-            background: #b2bec3;
-        }
-        
-        .footer {
-            text-align: center;
-            color: #636e72;
-            padding-top: 20px;
-            border-top: 1px solid #dfe6e9;
-        }
-        
-        @media (max-width: 768px) {
-            .portfolio-container {
-                padding: 20px;
-            }
-            
-            .header h1 {
-                font-size: 2rem;
-            }
-            
-            .projects-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .project-links {
-                flex-direction: column;
-            }
-            
-            .btn {
-                width: 100%;
-                justify-content: center;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
 </head>
 <body>
-    <div class="portfolio-container">
-        <div class="header">
-            <h1><span class="highlight">Raoul Lupastean</span> - JavaScript Portfolio</h1>
-            <p>A collection of interactive web applications built with vanilla JavaScript</p>
-        </div>
-        
-        <div class="projects-grid">
-            <!-- Shopping Cart -->
-            <div class="project-card">
-                <h3><i class="fas fa-shopping-cart"></i> Shopping Cart</h3>
-                <p>E-commerce cart with local storage, filtering, and real-time calculations.</p>
-                <div class="project-links">
-                    <a href="shopping-cart/index.html" class="btn btn-primary">
-                        <i class="fas fa-eye"></i> Live Demo
-                    </a>
-                    <a href="https://github.com/LupasteanRaoul/javascript-portfolio/tree/main/shopping-cart" 
-                       class="btn btn-secondary" target="_blank">
-                        <i class="fab fa-github"></i> Code
-                    </a>
-                </div>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-code"></i>
+                <span>JavaScript Portfolio</span>
             </div>
-            
-            <!-- Sorting Visualizer -->
-            <div class="project-card">
-                <h3><i class="fas fa-sort-amount-down"></i> Sorting Visualizer</h3>
-                <p>Visualize algorithms with step-by-step execution and performance metrics.</p>
-                <div class="project-links">
-                    <a href="sorting-visualizer/index.html" class="btn btn-primary">
-                        <i class="fas fa-eye"></i> Live Demo
-                    </a>
-                    <a href="https://github.com/LupasteanRaoul/javascript-portfolio/tree/main/sorting-visualizer" 
-                       class="btn btn-secondary" target="_blank">
-                        <i class="fab fa-github"></i> Code
-                    </a>
-                </div>
-            </div>
-            
-            <!-- Minigame -->
-            <div class="project-card">
-                <h3><i class="fas fa-gamepad"></i> Rock Paper Scissors</h3>
-                <p>Classic game with modern UI, win tracking, and auto-play mode.</p>
-                <div class="project-links">
-                    <a href="minigame/index.html" class="btn btn-primary">
-                        <i class="fas fa-eye"></i> Live Demo
-                    </a>
-                    <a href="https://github.com/LupasteanRaoul/javascript-portfolio/tree/main/minigame" 
-                       class="btn btn-secondary" target="_blank">
-                        <i class="fab fa-github"></i> Code
-                    </a>
-                </div>
-            </div>
-            
-            <!-- Music Player -->
-            <div class="project-card">
-                <h3><i class="fas fa-music"></i> Music Player</h3>
-                <p>Audio player with playlist, progress bar, and visualizations.</p>
-                <div class="project-links">
-                    <a href="music-player/index.html" class="btn btn-primary">
-                        <i class="fas fa-eye"></i> Live Demo
-                    </a>
-                    <a href="https://github.com/LupasteanRaoul/javascript-portfolio/tree/main/music-player" 
-                       class="btn btn-secondary" target="_blank">
-                        <i class="fab fa-github"></i> Code
-                    </a>
-                </div>
-            </div>
-            
-            <!-- Weather App -->
-            <div class="project-card">
-                <h3><i class="fas fa-cloud-sun"></i> Weather App</h3>
-                <p>Weather forecast with location detection and animated icons.</p>
-                <div class="project-links">
-                    <a href="weather-app/index.html" class="btn btn-primary">
-                        <i class="fas fa-eye"></i> Live Demo
-                    </a>
-                    <a href="https://github.com/LupasteanRaoul/javascript-portfolio/tree/main/weather-app" 
-                       class="btn btn-secondary" target="_blank">
-                        <i class="fab fa-github"></i> Code
-                    </a>
-                </div>
-            </div>
-            
-            <!-- Todo App -->
-            <div class="project-card">
-                <h3><i class="fas fa-tasks"></i> Todo App</h3>
-                <p>Task management with CRUD operations and local storage.</p>
-                <div class="project-links">
-                    <a href="todo-app/index.html" class="btn btn-primary">
-                        <i class="fas fa-eye"></i> Live Demo
-                    </a>
-                    <a href="https://github.com/LupasteanRaoul/javascript-portfolio/tree/main/todo-app" 
-                       class="btn btn-secondary" target="_blank">
-                        <i class="fab fa-github"></i> Code
-                    </a>
-                </div>
-            </div>
-        </div>
-        
-        <div class="footer">
-            <p>
-                <strong>GitHub Repository:</strong> 
-                <a href="https://github.com/LupasteanRaoul/javascript-portfolio" target="_blank">
-                    github.com/LupasteanRaoul/javascript-portfolio
+            <div class="nav-links">
+                <a href="#projects" class="nav-link">Projects</a>
+                <a href="#about" class="nav-link">About</a>
+                <a href="#contact" class="nav-link">Contact</a>
+                <a href="https://github.com/LupasteanRaoul" target="_blank" class="nav-link github-link">
+                    <i class="fab fa-github"></i> GitHub
                 </a>
-            </p>
-            <p style="margin-top: 10px;">
-                &copy; 2024 Raoul Lupastean. All rights reserved.
-            </p>
+            </div>
         </div>
-    </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero-section">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1 class="hero-title">Hi, I'm <span class="highlight">Raoul Lupastean</span></h1>
+                <h2 class="hero-subtitle">JavaScript Developer</h2>
+                <p class="hero-description">
+                    A collection of interactive web applications built with vanilla JavaScript, HTML5, and CSS3. 
+                    Each project demonstrates different aspects of frontend development.
+                </p>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <span class="stat-number" id="project-count">10</span>
+                        <span class="stat-label">Projects</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">100%</span>
+                        <span class="stat-label">Vanilla JS</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">0</span>
+                        <span class="stat-label">Dependencies</span>
+                    </div>
+                </div>
+                <a href="#projects" class="cta-button">
+                    <i class="fas fa-arrow-down"></i> View Projects
+                </a>
+            </div>
+            <div class="hero-image">
+                <div class="code-animation">
+                    <pre><code class="javascript">// Pure JavaScript Projects
+const portfolio = {
+  projects: 10,
+  technologies: ['HTML5', 'CSS3', 'ES6+'],
+  features: ['Responsive', 'Interactive', 'Modern UI'],
+  deployed: true
+};</code></pre>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Projects Grid -->
+    <main class="projects-section" id="projects">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">
+                    <i class="fas fa-laptop-code"></i> My Projects
+                </h2>
+                <p class="section-subtitle">
+                    Click on any project to view it live. All projects are standalone and work in any modern browser.
+                </p>
+            </div>
+
+            <div class="projects-grid" id="projects-grid">
+                <!-- Projects will be dynamically loaded -->
+            </div>
+
+            <div class="tech-stack">
+                <h3>Technologies Used</h3>
+                <div class="tech-icons">
+                    <div class="tech-icon" title="HTML5">
+                        <i class="fab fa-html5"></i>
+                        <span>HTML5</span>
+                    </div>
+                    <div class="tech-icon" title="CSS3">
+                        <i class="fab fa-css3-alt"></i>
+                        <span>CSS3</span>
+                    </div>
+                    <div class="tech-icon" title="JavaScript">
+                        <i class="fab fa-js-square"></i>
+                        <span>JavaScript</span>
+                    </div>
+                    <div class="tech-icon" title="Git">
+                        <i class="fab fa-git-alt"></i>
+                        <span>Git</span>
+                    </div>
+                    <div class="tech-icon" title="GitHub">
+                        <i class="fab fa-github"></i>
+                        <span>GitHub</span>
+                    </div>
+                    <div class="tech-icon" title="Responsive Design">
+                        <i class="fas fa-mobile-alt"></i>
+                        <span>Responsive</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- About Section -->
+    <section class="about-section" id="about">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">
+                    <i class="fas fa-user"></i> About This Portfolio
+                </h2>
+            </div>
+            <div class="about-content">
+                <div class="about-card">
+                    <div class="about-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3>Learning Purpose</h3>
+                    <p>Each project focuses on different JavaScript concepts and web development techniques.</p>
+                </div>
+                <div class="about-card">
+                    <div class="about-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3>No Frameworks</h3>
+                    <p>Built with pure vanilla JavaScript to demonstrate fundamental understanding.</p>
+                </div>
+                <div class="about-card">
+                    <div class="about-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>Responsive Design</h3>
+                    <p>All projects work perfectly on mobile, tablet, and desktop devices.</p>
+                </div>
+                <div class="about-card">
+                    <div class="about-icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h3>Ready to Deploy</h3>
+                    <p>Each project can be easily deployed to GitHub Pages, Netlify, or Vercel.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section" id="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">
+                    <i class="fas fa-envelope"></i> Get In Touch
+                </h2>
+            </div>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fab fa-github"></i>
+                        <div>
+                            <h4>GitHub</h4>
+                            <a href="https://github.com/LupasteanRaoul" target="_blank">
+                                github.com/LupasteanRaoul
+                            </a>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-code-branch"></i>
+                        <div>
+                            <h4>Repository</h4>
+                            <a href="https://github.com/LupasteanRaoul/javascript-portfolio" target="_blank">
+                                View Source Code
+                            </a>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-globe"></i>
+                        <div>
+                            <h4>Live Demo</h4>
+                            <a href="https://lupasteanraoul.github.io/javascript-portfolio/" target="_blank">
+                                Portfolio Website
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <i class="fas fa-code"></i>
+                    <span>JavaScript Portfolio</span>
+                </div>
+                <p class="footer-description">
+                    A showcase of web development projects built with vanilla JavaScript.
+                </p>
+                <div class="footer-links">
+                    <a href="#projects">Projects</a>
+                    <a href="#about">About</a>
+                    <a href="#contact">Contact</a>
+                    <a href="https://github.com/LupasteanRaoul/javascript-portfolio" target="_blank">
+                        Source Code
+                    </a>
+                </div>
+                <div class="footer-bottom">
+                    <p>&copy; 2024 Raoul Lupastean. All rights reserved.</p>
+                    <p class="footer-note">
+                        Built with <i class="fas fa-heart"></i> and pure JavaScript
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="back-to-top" class="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script src="script.js"></script>
 </body>
 </html>
